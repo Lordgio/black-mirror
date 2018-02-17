@@ -35,13 +35,13 @@ import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
 /**
- * Klasa odpowiada za główny ekran aplikacji.
+ * The class is responsible for the main screen of the application.
  */
 public class HomeActivity extends BaseActivity implements HomeView,
         ActivationKeywordListener, SpeechRecognizer.Listener {
 
     /**
-     * @return Podajemy refernecje do odpowiedniego widoku xml.
+     * We provide references to the appropriate xml view.
      */
     @Override
     protected Integer getLayoutRes() {
@@ -107,7 +107,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Zdarzenie, które oznjamia o gotowości nasłuchiwania słowa kluczowego.
+     * An event that indicates that you are ready to listen for a keyword.
      */
     @Override
     public void onActivationKeywordRecognizerReady() {
@@ -117,7 +117,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Zdarzenie, które oznjamia o wykryciu słowa kluczowego.
+     * An event that indicates that a keyword has been detected.
      */
     @Override
     public void onActivationKeywordDetected() {
@@ -125,7 +125,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
         commandRecognizingAnimation.startAnimation();
         activationKeywordTextIndicator.setVisibility(INVISIBLE);
         activeSpeechIndicator.setVisibility(View.INVISIBLE);
-        // Zacznij słuchać komendy.
+        // Start listening to the command.
         commandSpeechRecognizer.startListeningCommand();
         if (welcomeView.getVisibility() == View.VISIBLE) {
             YoYo.with(Techniques.Tada)
@@ -139,27 +139,26 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Zadrzenie, które oznajmia o rozpoznaniu mowy.
-     *
-     * @param result w parametrze zwraca rezultat rozpoznawania komendy głosowej.
+     * An event that speaks of speech recognition.
+     * @param result in the parameter returns the result of recognizing the voice command.
      */
     @Override
     public void onSpeechRecognized(final String result) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                // Informujemy presenter o rozpoznaniu komendy głosowej.
+                // We would like to inform the presenter about the recognition of the voice command.
                 homePresenter.onSpeechRecognized(result);
             }
         });
     }
 
     /**
-     * Zdarzenie, które oznjamia o zakończeniu rozpoznawania komendy głosowej.
+     * An event that indicates that the voice command has been completed.
      */
     @Override
     public void onFinishSpeechRecognizing() {
-        // zaczynamy znowu słuchąć słowa kluczowego.
+        // we start listening to the keyword again.
         pocketSphinx.startListeningToActivationKeyword();
         runOnUiThread(new Runnable() {
             @Override
@@ -171,7 +170,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Zdarzenie, które oznjamia o wykryciu mowy podczas nasłuchiwania słowa kluczowego.
+     * An event that indicates speech detection while listening to a keyword.
      */
     @Override
     public void onActivationKeywordBeginningOfSpeech() {
@@ -179,7 +178,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Zdarzenie, które oznjamia o zakończenia słuchania mowy podczas nasłuchiwania słowa kluczowego.
+     * An event that announces the end of speech listening while listening to a keyword.
      */
     @Override
     public void onActivationKeywordEndOfSpeech() {
@@ -187,7 +186,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Pokazuje widżet pogody.
+     * Shows the weather widget.
      */
     @Override
     public void showWeatherWidget(WeatherResponse weatherResponse) {
@@ -195,7 +194,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Ukrywa widżet pogody.
+     * Hides the weather widget.
      */
     @Override
     public void hideWeatherWidget() {
@@ -203,7 +202,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Pokazuje widżet czasu.
+     * Shows the time widget.
      */
     @Override
     public void showTimeWidget(String timeZone) {
@@ -211,7 +210,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Ukrywa widżet czasu.
+     * Hides the time widget.
      */
     @Override
     public void hideTimeWidget() {
@@ -219,7 +218,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Pokazuje widżet z wiadomościami Tvn.
+     * Shows widget with Tvn messages.
      */
     @Override
     public void showTvnNewsWidget(List<News> newsList) {
@@ -227,7 +226,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Pokazuje widżet z wiadomościami Polsatu.
+     * Shows widget with Polsat messages.
      */
     @Override
     public void showPolsatNewsWidget(List<News> news) {
@@ -235,7 +234,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Ukrywa wszystkie wiadomości.
+     * Hides all messages.
      */
     @Override
     public void hideAllNewsWidget() {
@@ -243,7 +242,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Pokazuje widżet kalendarza.
+     * Shows the calendar widget.
      */
     @Override
     public void showCalendarWidget() {
@@ -251,7 +250,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Ukrywa widżet kalendarza.
+     * Hides the calendar widget.
      */
     @Override
     public void hideCalendarWidget() {
@@ -259,7 +258,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Zmienia miesiąć kalendarza na kolejny.
+     * Changes the calendar month to the next.
      */
     @Override
     public void setCalendarNextMonth() {
@@ -267,7 +266,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Zmienia miesiąć kalendarza na poprzedni.
+     * Changes the calendar month to the previous one.
      */
     @Override
     public void setCalendarPreviousMonth() {
@@ -275,9 +274,9 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Wyświetla powiadomienie o błędzie.
+     * Displays an error notification.
      *
-     * @param message w parametrze zwraca wiadomość błędu.
+     * @param message in parameter returns error message.
      */
     @Override
     public void showError(String message) {
@@ -285,7 +284,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Zamyka okno aplikacji.
+     * Closes the application window.
      */
     @OnClick(R.id.exit)
     public void exit() {
@@ -293,7 +292,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Uruchamia ponownie aplikację.
+     * Restarts the application.
      */
     @OnClick(R.id.restart)
     public void restart() {
@@ -303,7 +302,7 @@ public class HomeActivity extends BaseActivity implements HomeView,
     }
 
     /**
-     * Uruchamia ponownie aplikację.
+     * Restarts the application.
      */
     @Override
     public void startSplashScreen() {

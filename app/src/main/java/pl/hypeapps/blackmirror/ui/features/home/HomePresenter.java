@@ -12,8 +12,8 @@ import pl.hypeapps.blackmirror.speechrecognition.TextCommandInterpreter;
 import pl.hypeapps.blackmirror.ui.presenter.Presenter;
 
 /**
- * Klasa, której zadaniem jest manipulowanie widokiem, oraz zarządzanie warstwą
- * dostępu do danych.
+ * A class whose task is to manipulate the view and manage the layer
+ * access to data.
  */
 public class HomePresenter extends Presenter<HomeView> implements TextCommandInterpreter.Listener {
 
@@ -28,17 +28,17 @@ public class HomePresenter extends Presenter<HomeView> implements TextCommandInt
     private TextCommandInterpreter textCommandInterpreter = new TextCommandInterpreter(this);
 
     /**
-     * Zdarzenie wykonywane kiedy dojdzie do rozpoznania mowy.
-     * Parametr wykorzystywany jest do interpretacji komendy.
+     * An event performed when speech recognition occurs.
+     * The parameter is used to interpret the command.
      *
-     * @param result rezultat rozpoznawania mowy.
+     * @param result the result of speech recognition.
      */
     void onSpeechRecognized(String result) {
         textCommandInterpreter.interpret(result);
     }
 
     /**
-     * Metoda wykonywana kiedy tworzymy widok.
+     * The method performed when creating a view.
      */
     @Override
     protected void onAttachView(HomeView view) {
@@ -47,7 +47,7 @@ public class HomePresenter extends Presenter<HomeView> implements TextCommandInt
     }
 
     /**
-     * Metoda wykonywana kiedy niszczymy widok.
+     * The method performed when destroying the view.
      */
     @Override
     protected void onDetachView() {
@@ -55,18 +55,18 @@ public class HomePresenter extends Presenter<HomeView> implements TextCommandInt
     }
 
     /**
-     * Metoda wywoływana kiedy rozpoznawanie komendy zakończy się niepowodzeniem.
-     * Pokazuje komunikat o błędzie.
+     * The method called when the command recognition fails.
+     * Shows error message.
      */
     @Override
     public void onFailureCommandRecognizing() {
         Log.e(TAG, "Text command interpreter failed to recognize command");
-        this.view.showError("Niepoprawna komenda");
+        this.view.showError("Incorrect command");
     }
 
     /**
-     * Metoda wywoływana kiedy rozpoznana zostanie komenda pokazania pogody.
-     * Pokazuje widżet.
+     * The method is called when the weather display command is recognized.
+     * Shows the widget.
      */
     @Override
     public void onShowWeatherCommandRecognized(String location) {
@@ -74,8 +74,8 @@ public class HomePresenter extends Presenter<HomeView> implements TextCommandInt
     }
 
     /**
-     * Metoda wywoływana kiedy rozpoznana zostanie komenda ukrycia pogody.
-     * Ukrywa widżet.
+     * The method is called when the weather conceal command is recognized.
+     * Hides the widget.
      */
     @Override
     public void onHideWeatherCommandRecognized() {
@@ -84,9 +84,9 @@ public class HomePresenter extends Presenter<HomeView> implements TextCommandInt
     }
 
     /**
-     * Metoda wywoływana kiedy rozpoznana zostanie komenda pokazania zegara.
-     * Rejestruje obserwatora żądania REST.
-     * @param location lokalizacja dla, której ma zostać pokazany czas.
+     * The method is called when the clock display command is recognized.
+     * Registers the REST request observer.
+     * @param location location for which time is to be shown.
      */
     @Override
     public void onShowTimeCommandRecognized(String location) {
@@ -94,8 +94,8 @@ public class HomePresenter extends Presenter<HomeView> implements TextCommandInt
     }
 
     /**
-     * Metoda wywoływana kiedy rozpoznana zostanie komenda ukrycia zegara.
-     * Ukrywa widżet.
+     * The method is called when the clock hide command is recognized.
+     * Hides the widget.
      */
     @Override
     public void onHideTimeCommandRecognized() {
@@ -104,8 +104,8 @@ public class HomePresenter extends Presenter<HomeView> implements TextCommandInt
     }
 
     /**
-     * Metoda wywoływana kiedy rozpoznana zostanie komenda pokazania kalendarza.
-     * Pokazuje kalendarz.
+     * The method is called when the command to show the calendar is recognized.
+     * Shows the calendar.
      */
     @Override
     public void onShowCalendarCommandRecognized() {
@@ -114,8 +114,8 @@ public class HomePresenter extends Presenter<HomeView> implements TextCommandInt
     }
 
     /**
-     * Metoda wywoływana kiedy rozpoznana zostanie komenda ukrycia kalendarza.
-     * Ukrywa kalendarz.
+     * The method is called when the calendar hide command is recognized.
+     * Hides the calendar.
      */
     @Override
     public void onHideCalendarCommandRecognized() {
@@ -124,8 +124,8 @@ public class HomePresenter extends Presenter<HomeView> implements TextCommandInt
     }
 
     /**
-     * Metoda wywoływana kiedy rozpoznana zostanie komenda pokazania kolejnego miesiąca.
-     * Zmienia aktualny miesiąć kalendarza na kolejny.
+     * The method is called when the command to show the next month is recognized.
+     * Changes the current calendar month to the next.
      */
     @Override
     public void onNextMonthCommandRecognized() {
@@ -134,8 +134,8 @@ public class HomePresenter extends Presenter<HomeView> implements TextCommandInt
     }
 
     /**
-     * Metoda wywoływana kiedy rozpoznana zostanie komenda pokazania poprzedniego miesiąca.
-     * Zmienia aktualny miesiąć kalendarza na poprzedni.
+     * The method is called when the previous month's command is recognized.
+     * Changes the current calendar month to the previous one.
      */
     @Override
     public void onPreviousMonthRecognized() {
@@ -144,8 +144,8 @@ public class HomePresenter extends Presenter<HomeView> implements TextCommandInt
     }
 
     /**
-     * Metoda wywoływana kiedy rozpoznana zostanie komenda pokazania widżetu wiadomości.
-     * Pokazuje widżet.
+     * The method called when the command to show the news widget is recognized.
+     * Shows the widget.
      */
     @Override
     public void onShowNewsCommandRecognized() {
@@ -155,8 +155,8 @@ public class HomePresenter extends Presenter<HomeView> implements TextCommandInt
     }
 
     /**
-     * Metoda wywoływana kiedy rozpoznana zostanie komenda ukrycia widżetu wiadomości.
-     * Ukrywa widżet.
+     * The method is called when the hidden command of the message widget is recognized.
+     * Hides the widget.
      */
     @Override
     public void onHideNewsCommandRecognized() {
@@ -165,8 +165,8 @@ public class HomePresenter extends Presenter<HomeView> implements TextCommandInt
     }
 
     /**
-     * Metoda wywoływana kiedy rozpoznana zostanie komenda pokazania widżetu wiadomości kanału tvn.
-     * Pokazuje widżet z kanałem tvn.
+     * The method is called when the command to show the tvn news widget is recognized.
+     * Shows the widget with the tvn channel.
      */
     @Override
     public void onShowTvnNewsCommandRecognized() {
@@ -175,8 +175,8 @@ public class HomePresenter extends Presenter<HomeView> implements TextCommandInt
     }
 
     /**
-     * Metoda wywoływana kiedy rozpoznana zostanie komenda pokazania widżetu wiadomości kanału polsat.
-     * Pokazuje widżet z kanałem polsat.
+     * The method is called when the command to show the news widget of the polsat channel is recognized.
+     * Shows widget with polsat channel.
      */
     @Override
     public void onShowPolsatNewsCommandRecognized() {

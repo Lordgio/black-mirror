@@ -13,7 +13,8 @@ bin/
 gen/
 
 # Local configuration file (sdk path, etc)
-local.properties
+*.properties
+credentials.json
 
 # Windows thumbnail db
 Thumbs.db
@@ -26,8 +27,6 @@ Thumbs.db
 .idea
 #.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
 .gradle
-gradle.properties
-credentials.json
 build/
 .navigation
 captures/
@@ -36,3 +35,4 @@ output.json
 #NDK
 obj/
 .externalNativeBuild
+*.aar

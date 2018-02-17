@@ -1,13 +1,11 @@
 package pl.hypeapps.blackmirror.ui.base;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -20,10 +18,4 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayoutRes());
         ButterKnife.bind(this);
     }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
-
 }

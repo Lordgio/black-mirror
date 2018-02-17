@@ -89,7 +89,7 @@ dependencies {
     implementation 'com.spotify.sdk:spotify-player-24-noconnect-2.20b@aar'
 
     //Visual integration
-    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+    //implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
     implementation ('com.airbnb.android:lottie:2.2.5'){
         exclude group: 'com.android.support'
     }

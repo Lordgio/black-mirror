@@ -98,13 +98,13 @@ public class WeatherWidgetView extends ConstraintLayout {
     }
 
     private void fillWeatherInfo(WeatherResponse weatherResponse) {
-        icon.setImageDrawable(getIconDrawable(weatherResponse.getWeather().get(0).getIcon()));
-        city.setText(weatherResponse.getCityName());
-        actualTemp.setText(weatherResponse.getMain().getTemp().toString() + (char) 0x00B0);
-        description.setText(weatherResponse.getWeather().get(0).getDescription());
-        pressure.setText(weatherResponse.getMain().getPressure().intValue() + " hPa");
-        humidity.setText(weatherResponse.getMain().getHumidity().intValue() + " %");
-        windSpeed.setText(weatherResponse.getWind().getSpeed().intValue() + " km/h");
+        icon.setImageDrawable(getIconDrawable(weatherResponse.weather.get(0).icon));
+        city.setText(weatherResponse.cityName);
+        actualTemp.setText(weatherResponse.main.temp.toString() + (char) 0x00B0);
+        description.setText(weatherResponse.weather.get(0).description);
+        pressure.setText(weatherResponse.main.pressure.intValue() + " hPa");
+        humidity.setText(weatherResponse.main.humidity.intValue() + " %");
+        windSpeed.setText(weatherResponse.wind.speed.intValue() + " km/h");
     }
 
     private Drawable getIconDrawable(String icon) {

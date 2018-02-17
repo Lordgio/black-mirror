@@ -28,8 +28,4 @@ public class News {
                 .trim();
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
 }
