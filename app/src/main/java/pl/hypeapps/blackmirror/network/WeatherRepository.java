@@ -1,7 +1,7 @@
 package pl.hypeapps.blackmirror.network;
 
-import io.reactivex.Single;
 import pl.hypeapps.blackmirror.model.weather.WeatherResponse;
+import retrofit2.Call;
 
 /**
  * Interfejs służący do komunikacji pomiędzy warstwą
@@ -9,6 +9,6 @@ import pl.hypeapps.blackmirror.model.weather.WeatherResponse;
  */
 public interface WeatherRepository {
 
-    Single<WeatherResponse> getWeatherByCityName(String cityName, String units, String lang);
+    Call<WeatherResponse> getWeatherByCityName(String cityName, String units, String lang);
 
 }

@@ -1,7 +1,7 @@
 package pl.hypeapps.blackmirror.network.rss.news;
 
-import io.reactivex.Single;
 import pl.hypeapps.blackmirror.model.news.PolsatNews;
+import retrofit2.Call;
 import retrofit2.http.GET;
 
 /**
@@ -10,5 +10,5 @@ import retrofit2.http.GET;
 public interface PolsatNewsRss {
 
     @GET("wszystkie.xml")
-    Single<PolsatNews> getNews();
+    Call<PolsatNews> getNews();
 }

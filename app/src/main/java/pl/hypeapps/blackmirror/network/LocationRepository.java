@@ -1,8 +1,8 @@
 package pl.hypeapps.blackmirror.network;
 
 
-import io.reactivex.Single;
 import pl.hypeapps.blackmirror.model.location.TimeZone;
+import retrofit2.Call;
 
 /**
  * Interfejs służący do komunikacji pomiędzy warstwą
@@ -10,6 +10,6 @@ import pl.hypeapps.blackmirror.model.location.TimeZone;
  */
 public interface LocationRepository {
 
-    Single<TimeZone> getTimeZoneByLocationName(String location);
+    Call<TimeZone> getTimeZoneByLocationName(String location);
 
 }

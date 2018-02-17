@@ -2,8 +2,8 @@ package pl.hypeapps.blackmirror.network;
 
 import java.util.List;
 
-import io.reactivex.Single;
 import pl.hypeapps.blackmirror.model.news.News;
+import retrofit2.Call;
 
 /**
  * Interfejs służący do komunikacji pomiędzy warstwą
@@ -11,8 +11,8 @@ import pl.hypeapps.blackmirror.model.news.News;
  */
 public interface NewsRepository {
 
-    Single<List<News>> getTvnNews();
+    Call<List<News>> getTvnNews();
 
-    Single<List<News>> getPolsatNews();
+   Call<List<News>> getPolsatNews();
 
 }
